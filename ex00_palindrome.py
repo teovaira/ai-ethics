@@ -1,109 +1,66 @@
 """
 Exercise 00 - Part B: Palindrome Checker
-This file contains the palindrome implementation following Track B approach.
-The Right Way: Attempt independently first, then use AI strategically.
+Implementation following Track B approach - attempt first, then improve with AI feedback.
 """
-
-# TODO: Implement your basic palindrome checker here
-# Remember: Try this yourself BEFORE asking AI!
-#
-# Steps to follow:
-# 1. Write pseudocode first (in ex00_ai_ethics_coder.md)
-# 2. Implement your solution here
-# 3. Test with multiple cases
-# 4. Debug any issues yourself
-# 5. Add comments explaining your logic
-# 6. ONLY THEN ask AI to review and suggest improvements
 
 def is_palindrome(s):
     """
-    Check if a string is a palindrome.
+    Check if a string is a palindrome (simple version - letters only).
 
     Args:
         s (str): The string to check
 
     Returns:
         bool: True if palindrome, False otherwise
-
-    TODO: Implement this function yourself first!
-    Example approach:
-    - Handle empty strings
-    - Convert to same case
-    - Compare characters from both ends moving inward
     """
-    pass
+    # Use two pointers, one from start and one from end
+    left = 0
+    right = len(s) - 1
+
+    # Keep comparing characters moving towards middle
+    while left < right:
+        # If any characters don't match, not a palindrome
+        if s[left] != s[right]:
+            return False
+        # Move pointers closer to middle
+        left += 1
+        right -= 1
+
+    # If we reached here, all characters matched
+    return True
 
 
-# TODO: Part C Variation 1 - Ignore spaces and punctuation
-def is_palindrome_ignore_punctuation(s):
+def is_palindrome_advanced(s):
     """
-    Check if a string is a palindrome, ignoring spaces and punctuation.
+    Check if a string is a palindrome with all variations integrated:
+    - Case-insensitive
+    - Ignores spaces
+    - Ignores punctuation
 
     Args:
         s (str): The string to check
 
     Returns:
         bool: True if palindrome, False otherwise
-
-    TODO: Implement this variation yourself!
-    Hint: You might need to filter out non-alphanumeric characters
     """
-    pass
+    # Remove all non-alphanumeric characters and make lowercase
+    cleaned = ""
+    for char in s.lower():
+        if char.isalnum():
+            cleaned += char
 
+    # Use two pointers, one from start and one from end
+    left = 0
+    right = len(cleaned) - 1
 
-# TODO: Part C Variation 2 - Case-insensitive
-def is_palindrome_case_insensitive(s):
-    """
-    Check if a string is a palindrome, ignoring case.
+    # Keep comparing characters moving towards middle
+    while left < right:
+        # If any characters don't match, not a palindrome
+        if cleaned[left] != cleaned[right]:
+            return False
+        # Move pointers closer to middle
+        left += 1
+        right -= 1
 
-    Args:
-        s (str): The string to check
-
-    Returns:
-        bool: True if palindrome, False otherwise
-
-    TODO: Implement this variation yourself!
-    Example: "Racecar" should return True
-    """
-    pass
-
-
-# TODO: Part C Variation 3 - Return position where palindrome fails
-def palindrome_fail_position(s):
-    """
-    If string is not a palindrome, return the position where it fails.
-    If it is a palindrome, return -1.
-
-    Args:
-        s (str): The string to check
-
-    Returns:
-        int: Position where palindrome check fails, or -1 if it's a palindrome
-
-    TODO: Implement this variation yourself!
-    Example: "racecxr" should return 4 (where 'x' doesn't match)
-    """
-    pass
-
-
-# Test cases - Add your own test cases here!
-if __name__ == "__main__":
-    # TODO: Write test cases to verify your implementations
-    # Example structure:
-
-    print("Testing basic palindrome checker:")
-    # test_cases = [
-    #     ("racecar", True),
-    #     ("hello", False),
-    #     ("A man a plan a canal Panama", True),  # This might fail in basic version
-    #     ("", True),  # Edge case - is empty string a palindrome?
-    # ]
-
-    # for text, expected in test_cases:
-    #     result = is_palindrome(text)
-    #     status = "✓" if result == expected else "✗"
-    #     print(f"{status} is_palindrome('{text}') = {result} (expected {expected})")
-
-    print("\nTODO: Add your test cases here!")
-    print("Remember: Write tests, run them, fix bugs, understand why it works.")
-    print("This is how you learn - not by copying working code!")
+    # If we reached here, all characters matched
+    return True
