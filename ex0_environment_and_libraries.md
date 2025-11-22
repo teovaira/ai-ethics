@@ -26,8 +26,8 @@ ai-ethics/
 ├── ex00_ai_ethics_coder.md
 ├── ex00_palindrome.py
 ├── ex01_bias_analysis.md
-├── ex02_ethical_prompts.md
-├── ex03_harmful_outputs.md
+├── ex02_designing_ethical_prompts.md
+├── ex03_detecting_and_mitigating_harmful_outputs.md
 └── ex04_learning_amplifier.md
 ```
 
